@@ -30,7 +30,7 @@ public class InitActivitiTableUtils {
 
 	public static ProcessEngine initTableFromResource() {
 
-		String resource = "/activiti.cfg.xml";
+		String resource = "/activiti/config/activiti.cfg.xml";
 		ProcessEngineConfiguration configuration = ProcessEngineConfiguration
 				.createProcessEngineConfigurationFromResource(resource);
 		ProcessEngine buildProcessEngine = configuration.buildProcessEngine();
@@ -53,6 +53,11 @@ public class InitActivitiTableUtils {
 
 	}
 
+	/**
+	 * @Description 类路径下必须直接有activiti.cfg.xml
+	 * @Datetime 2019年12月11日 下午2:47:20<br/>
+	 * @return
+	 */
 	public static ProcessEngine initTableDefault() {
 		ProcessEngine defaultProcessEngine = ProcessEngines.getDefaultProcessEngine();
 		System.out.println("使用默认xml配置创建的工作流是：" + defaultProcessEngine);
