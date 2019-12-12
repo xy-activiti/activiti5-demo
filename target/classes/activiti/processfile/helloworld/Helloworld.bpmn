@@ -5,7 +5,7 @@
     <endEvent id="endevent1" name="End"></endEvent>
     <userTask id="helloworldUsertask2" name="【任务到达】由小A喊" activiti:assignee="小A"></userTask>
     <sequenceFlow id="flow2" sourceRef="helloworldUsertask2" targetRef="endevent1"></sequenceFlow>
-    <userTask id="helloworldUsertask1" name="提出口号helloworld"></userTask>
+    <userTask id="helloworldUsertask1" name="提出口号helloworld" activiti:assignee="大Q哥"></userTask>
     <sequenceFlow id="flow3" sourceRef="startevent1" targetRef="helloworldUsertask1"></sequenceFlow>
     <sequenceFlow id="flow4" sourceRef="helloworldUsertask1" targetRef="helloworldUsertask2"></sequenceFlow>
   </process>
