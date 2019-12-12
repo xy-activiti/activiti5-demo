@@ -28,7 +28,7 @@ public class HelloworldProcess {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(HelloworldProcess.class);
 
-	private String helloworldProcessZipName="helloworld流程";
+	private static String helloworldProcessZipName = "helloworld流程";
 	private ProcessEngine processEngine = InitActivitiTableUtils.initTableFromResource();
 
 	/**
@@ -37,7 +37,11 @@ public class HelloworldProcess {
 	 * @Datetime 2019年12月11日 下午3:04:59<br/>
 	 */
 	@Test
-	public void compressHelloworldProcessFile() {
+	public void compressHelloworldProcessFileTest() {
+		System.out.println(compressHelloworldProcessFile());
+	}
+
+	public static boolean compressHelloworldProcessFile() {
 
 		String filePath = "activiti/processfile/helloworld/";
 		String bpmnFile = "Helloworld.bpmn";
@@ -48,13 +52,14 @@ public class HelloworldProcess {
 
 		String zipFileName = helloworldProcessZipName;
 
-		boolean compressFileResult;
+		boolean compressFileResult = false;
 		try {
 			compressFileResult = ZipUtils.compressFileAsZip(filePath, zipFileName, processFiles);
 			LOGGER.info("压缩结果: {}", compressFileResult);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		return compressFileResult;
 
 	}
 
@@ -126,14 +131,17 @@ public class HelloworldProcess {
 	 **************************************/
 	@Test
 	public void deployProcessByZip2() {
-		
-		RepositoryService repositoryService = processEngine.getRepositoryService();
-		
-		String filePath="activiti/processfile/helloworld/";
-		String processName = "helloworld流程zip";
-		String zipFile = helloworldProcessZipName;
-		
-		ProcessDeploymentUtils.deployProcessByZipInputStream(repositoryService, filePath, processName, zipFile);
+
+		if (compressHelloworldProcessFile()) {
+
+			RepositoryService repositoryService = processEngine.getRepositoryService();
+
+			String filePath = "activiti/processfile/helloworld/";
+			String processName = "helloworld流程zip";
+			String zipFile = helloworldProcessZipName;
+
+			ProcessDeploymentUtils.deployProcessByZipInputStream(repositoryService, filePath, processName, zipFile);
+		}
 	}
 
 }
