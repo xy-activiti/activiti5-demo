@@ -9,7 +9,7 @@
 
 	<properties>
 		<jdk.version>1.8</jdk.version>
-		<junit.version>4.12</junit.version>
+		<junit.version>4.13.1</junit.version>
 		<activiti.version>5.23.0</activiti.version>
 		<mysql.version>5.1.48</mysql.version>
 		<slf4j.version>1.7.25</slf4j.version>
